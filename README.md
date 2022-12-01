@@ -11,7 +11,7 @@ This project aims to design and simulate a trash collection robot. The robot wil
 - [Harika Pendli](https://github.com/)
 - [Aman Sharma](https://github.com/)
 
-*Course:** Software Development for Robotics  
+**Course:** Software Development for Robotics  
 **Code:** ENPM808X  
 **Project No:** Final Project
 **Semester:** Fall 2022  
