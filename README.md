@@ -19,9 +19,6 @@ This project aims to design and simulate a trash collection robot. The robot wil
 - [Aman Sharma](https://github.com/)
 
 
-
-
-
 ## License
 ```
 MIT License
@@ -49,10 +46,9 @@ SOFTWARE.
 
 
 ## UML Diagram
+![UML Initial](UML/Initial/UML_Initial.png)
 
-## Links
-
-### Docments Deliverables
+## Docments Deliverables
 1. [Project Proposal](assests/Final_808X_proposal.pdf)
 <!-- 
 2. [Quad Chart](submission/quad_chart/Quad%20Chart.pdf)
