@@ -16,7 +16,7 @@ This project aims to design and simulate a trash collection robot. The robot wil
 ## Authors
 - [Shailesh Pranav Rajendran](https://github.com/shaileshpranav)
 - [Harika Pendli](https://github.com/)
-- [Aman Sharma](https://github.com/)
+- [Aman Sharma](https://github.com/amancodeblast)
 
 
 ## License
@@ -56,9 +56,9 @@ SOFTWARE.
 3. [Sprint Sheet](https://docs.google.com/document/d/11cLR52aRCAyYz1M3-HGVqCmaej5kUB9rt5mzMqc03yA/edit?usp=sharing)
 
 ## Dependencies
-- Ubuntu 20.0 or above
-- ROS2 Humble/Foxy
-- ROS1 
+- Ubuntu 20.04
+- ROS Noetic
+
 
 ## Build
 - Create a workspace
