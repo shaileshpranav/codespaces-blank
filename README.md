@@ -16,7 +16,7 @@ This project aims to design and simulate a trash collection robot. The robot wil
 ## Authors
 - [Shailesh Pranav Rajendran](https://github.com/shaileshpranav)
 - [Harika Pendli](https://github.com/)
-- [Aman Sharma]([https://github.com/](https://github.com/amancodeblast))
+- [Aman Sharma](https://github.com/amancodeblast)
 
 
 ## License
