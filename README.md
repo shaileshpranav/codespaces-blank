@@ -50,11 +50,6 @@ SOFTWARE.
 
 ## Docments Deliverables
 1. [Project Proposal](assests/Final_808X_proposal.pdf)
-<!-- 
-2. [Quad Chart](submission/quad_chart/Quad%20Chart.pdf)
-
-3. [Class Diagram](submission/uml/Class%20Dependancy.png) -->
-
 
 2. [AIP Sheet](https://docs.google.com/spreadsheets/d/1XeTO0CUpv6UCy624VYsgb07ksButBDdTZqp0TRLlJ4I/edit?usp=sharing) 
 
@@ -63,6 +58,7 @@ SOFTWARE.
 ## Dependencies
 - Ubuntu 20.0 or above
 - ROS2 Humble/Foxy
+- ROS1 
 
 ## Build
 - Create a workspace
