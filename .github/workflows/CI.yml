@@ -56,6 +56,7 @@ jobs:
           cd ..
           rosdep install --from-paths src --ignore-src -r -s  # do a dry-run first
           rosdep install --from-paths src --ignore-src -r -y
+          sudo apt-get install -y libgazebo9-dev
       - name: Build Release
         run: |
           source /opt/ros/$ROS_DISTRO/setup.bash
