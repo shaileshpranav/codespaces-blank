@@ -14,18 +14,13 @@ jobs:
     container: raiderrobotics/container-registry:rr-noetic-base
     steps:
       - uses: actions/checkout@v3
+      - uses: betwo/github-setup-catkin@master
         with:
-          submodules: recursive
-      # Packages for coveralls
-      - name: install packages
-        run: |
-          pip install --user cpp-coveralls
-          sudo apt-get install -y -qq lcov
+          ros-version: 'melodic'
+          build-tool: 'catkin_tools'
+          workspace: '$GITHUB_WORKSPACE'
+      - run: catkin build
       
-      - name: 🔨 Build Project
-        run: |
-            source /opt/ros/noetic/setup.bash 
-            catkin_make
               
   test:
     needs: build
