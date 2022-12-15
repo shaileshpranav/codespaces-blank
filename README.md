@@ -47,7 +47,7 @@ SOFTWARE.
 
 
 ## UML Diagram
-![UML Initial](UML/Final/UML_Final.png)
+![UML Initial](UML/FInal/UML_Final.png)
 
 ## Docments Deliverables
 1. [Project Proposal](assests/Final_808X_proposal.pdf)
