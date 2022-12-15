@@ -12,37 +12,47 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     container: raiderrobotics/container-registry:rr-noetic-base
+    defaults:
+      run:
+        shell: bash
+
     steps:
-    - name: ✔️ Checkout Repository and Submodules
-      uses: actions/checkout@v2
-      with:
-        submodules: recursive
-    - name: 🔨 Build Project
-      run: |
-        source /opt/ros/noetic/setup.bash
-        cd /_w/
-        catkin_make
+      - uses: actions/checkout@v2
+        with:
+          path: src/${{ github.workspace }}
+
+      - name: Create workspace
+        run: |
+          cd src
+          wstool init
+          cd ..
+          rosdep update
+          rosdep install -y --from-paths src --ignore-src --rosdistro noetic
+      - name: Build workspace
+        run: |
+          . /opt/ros/noetic/setup.bash
+          catkin build
       
-              
-  test:
-    needs: build
-    runs-on: ubuntu-20.04
-    container: raiderrobotics/container-registry:rr-noetic-base
-    steps:
-    - name: ✔️ Checkout Repository and Submodules
-      uses: actions/checkout@v2
-      with:
-        submodules: recursive
-    - name: 🧪 Execute Unit Tests
-      run: |
-         source /opt/ros/noetic/setup.bash
-         catkin_make run_tests
+      - name: Unit tests
+        run: |
+          sudo apt install -y lcov
+          . /opt/ros/$ROS_DISTRO/setup.bash
+          catkin config --cmake-args -DCMAKE_CXX_FLAGS="-Wall -Wno-unused --coverage -fno-inline -fno-inline-small-functions -fno-default-inline" -DCMAKE_C_FLAGS="-Wall -Wno-unused --coverage -fno-inline -fno-inline-small-functions -fno-default-inline" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXE_LINKER_FLAGS="-lgcov"
+          catkin build
+          catkin run_tests -i && catkin_test_results
+
+      - name: Configure Codecov
+        run: |
+          lcov --directory . --capture --output-file coverage.info
+          lcov --remove coverage.info '/opt/*' '/usr/*' '*/devel/*' '*_test*' --output-file coverage.info
+          lcov --list coverage.info
+             
 
      # Upload coverage result to Coverage.io 
-    - name: Upload result to Coveralls.io
-      uses: coverallsapp/github-action@1.1.3
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: ${{github.workspace}}/build/coverage.info.cleaned
-        fail_ci_if_error: true # optional (default = false)
-        verbose: true #
+      - name: Upload result to Coveralls.io
+        uses: coverallsapp/github-action@1.1.3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ${{github.workspace}}/build/coverage.info.cleaned
+          fail_ci_if_error: true # optional (default = false)
+          verbose: true #
