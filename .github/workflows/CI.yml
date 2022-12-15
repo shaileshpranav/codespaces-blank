@@ -54,7 +54,7 @@ jobs:
           cd ~/catkin_ws/src
           ln -s ~/work  # $CI_SOURCE_PATH
           ls work/
-          bash work/install.bash
+          bash work/Wall-E/install.bash
           cd ..
           rosdep install --from-paths src --ignore-src -r -s  # do a dry-run first
           rosdep install --from-paths src --ignore-src -r -y
