@@ -31,8 +31,7 @@ jobs:
           
       - name: Build workspace
         run: |
-          bash install.bash
-          cd ../..
+          bash src/${{ github.workspace }}/install.bash
           . /opt/ros/noetic/setup.bash
           catkin build
 
