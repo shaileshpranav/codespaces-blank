@@ -21,16 +21,18 @@ jobs:
         with:
           path: src/${{ github.workspace }}
 
-      - name: Create workspace
-        run: |
-          cd src
-          wstool init
-          cd ..
-          sudo rosdep update
-          sudo rosdep install -y --from-paths src --ignore-src --rosdistro noetic
+#       - name: Create workspace
+#         run: |
+#           cd src
+#           wstool init
+#           cd ..
+#           sudo rosdep update
+#           sudo rosdep install -y --from-paths src --ignore-src --rosdistro noetic
           
       - name: Build workspace
         run: |
+          bash install.bash
+          cd ../..
           . /opt/ros/noetic/setup.bash
           catkin build
 
