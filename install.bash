@@ -19,5 +19,5 @@ sudo apt install ros-$ROS_DISTRO-amcl
 sudo apt install ros-$ROS_DISTRO-map-server
 sudo apt install ros-$ROS_DISTRO-navigation
 
-
+source /opt/ros/noetic/setup.bash
 rospack profile
