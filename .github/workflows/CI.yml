@@ -28,12 +28,14 @@ jobs:
 #           cd ..
 #           sudo rosdep update
 #           sudo rosdep install -y --from-paths src --ignore-src --rosdistro noetic
+      - name: Install dependencies
+        run: |
+          bash src/${{ github.workspace }}/install.bash
           
       - name: Build workspace
         run: |
-          bash src/${{ github.workspace }}/install.bash
           . /opt/ros/noetic/setup.bash
-          catkin build
+          catkin_make
 
       - name: Unit tests
         run: |
