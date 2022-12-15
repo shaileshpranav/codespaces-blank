@@ -10,8 +10,9 @@ on:
    
 jobs:
   build-and-test:
-      runs-on: ubuntu-latest
-      steps:
+    runs-on: ubuntu-20.04
+    container: raiderrobotics/container-registry:rr-noetic-base
+    steps:
       - uses: actions/checkout@v3
         with:
           submodules: recursive
