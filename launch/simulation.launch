@@ -4,12 +4,11 @@
   <arg name="world_name" default="$(find wall-e)/world/final_world.world" />
   <arg name="gazebo_ros_output" default="screen"/>
   <!-- load content of targets.yaml into the Parameter Server -->
-  <node name="simple_navigation_goals" pkg="wall-e" type="wall-e_node" output = "screen">
+  <node name="simple_navigation_goals" pkg="wall-e" type="Navigation_node" output = "screen">
   <rosparam file="$(find wall-e)/param/aruco_lookup.yaml" command="load" />
   </node>
 
-<!-- <node name="gazebo" pkg="gazebo_ros" type="gazebo"
-   args="$(find aws_robomaker_small_house_world)/worlds/small_house.world" respawn="false" output="screen" /> -->
+  <node pkg="wall-e" name="objectSpawner" type="object_spawner_node" output="screen"/>
 
   <!-- Launch gazebo -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -24,19 +23,6 @@
 
   <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_waffle.urdf.xacro laser_visual:=false" />
 
- <!-- start marker detector -->
-  <!-- <node name="aruco_detect" pkg="aruco_detect" type="aruco_detect">
-    <param name="image_transport" value="compressed" />
-    <param name="publish_images" value="true" />
-    <param name="fiducial_len" value="0.15" />
-    <param name="dictionary" value="0" />
-    <param name="do_pose_estimation" value="true" />
-    <param name="ignore_fiducials" value="" />
-    <param name="fiducial_len_override" value="" />
-    <remap from="/camera/compressed" to="/explorer/camera/rgb/image_raw/compressed" />
-    <remap from="/camera_info" to="/explorer/camera/rgb/camera_info" />
-  </node> -->
-
   <!-- explorer robot-->
   <group ns="explorer">
     <param name="tf_prefix" value="explorer_tf" />
@@ -46,15 +32,6 @@
     </include>
   </group>
 
-  <!-- follower robot-->
-  <!-- <group ns="follower">
-      <param name="tf_prefix" value="follower_tf" />
-    <include file="$(find wall-e)/launch/single_robot.launch" >
-      <arg name="init_pose" value="-x -4 -y 3.5 -z 0" />
-      <arg name="robot_name"  value="follower" />
-    </include>
-  </group> -->
-
   <!-- Navigation -->
   <!-- Run the map server -->
   <node name="map_server" pkg="map_server" type="map_server" args="$(find wall-e)/maps/final_world.yaml">
@@ -62,16 +39,19 @@
   </node>
 
 
-  <!-- Properties of each robot      -->
   <!-- start amcl -->
   <include file="$(find wall-e)/launch/explorer_amcl.launch" />
-  <!-- <include file="$(find wall-e)/launch/follower_amcl.launch" /> -->
 
   <!-- start move base-->
   <include file="$(find wall-e)/launch/explorer_move_base.launch" />
-  <!-- <include file="$(find wall-e)/launch/follower_move_base.launch" /> -->
 
   <!-- launch rviz -->
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find wall-e)/rviz/turtlebot3_navigation.rviz" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find wall-e)/rviz/rviz.rviz" />
+
+  <arg name="record_bag" default="false"/>
+  <group if="$(arg record_bag)">
+      <node pkg="rosbag" type="record" name="rosbag_recorder"
+            args="record -O $(find decluttering_domestic_robot)../results/my_bag -a"/>
+  </group>
 
 </launch>
