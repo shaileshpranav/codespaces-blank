@@ -107,3 +107,4 @@ jobs:
           # nothing uses linting here so this fails:
           # "Error: With --no-deps, you must specify packages to build."
           catkin run_tests
+
