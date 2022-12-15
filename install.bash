@@ -18,6 +18,7 @@ sudo apt install ros-$ROS_DISTRO-actionlib-msgs
 sudo apt install ros-$ROS_DISTRO-amcl
 sudo apt install ros-$ROS_DISTRO-map-server
 sudo apt install ros-$ROS_DISTRO-navigation
+sudo apt-get install ros-$ROS_DISTRO-gazebo-ros-pkgs ros-noetic-$ROS_DISTRO-ros-control ros-$ROS_DISTRO-gazebo-msga
 
 source /opt/ros/noetic/setup.bash
 rospack profile
