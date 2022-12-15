@@ -19,7 +19,9 @@ jobs:
         submodules: recursive
     - name: 🔨 Build Project
       run: |
-        /bin/bash -c "source /opt/ros/noetic/setup.bash && catkin_make v5_hal_firmware_build"
+        source /opt/ros/noetic/setup.bash
+        cd /_w/
+        catkin_make
       
               
   test:
