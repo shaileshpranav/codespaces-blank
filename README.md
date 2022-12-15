@@ -116,3 +116,14 @@ To run the test execute following command.
 ```
 rostest wall-e main_test.test
 ```
+## Known Issues/Bugs
+* In some cases the robot goes spinning without a stop. This behaviour can be fixed by trying different searching patterns. 
+
+## Risks and Mitigation
+* If there is any sudden movement, mapping and localisation will be not as good as it is suppose to be.
+* A robost system Detect
+
+## Assumptions
+* The obstacles will be satatic. 
+* All the trash will be a purple box. 
+* The size of the transh will also be same almost always
