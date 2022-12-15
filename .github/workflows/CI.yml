@@ -24,7 +24,7 @@ jobs:
       
       - name: 🔨 Build Project
         run: |
-          /bin/bash -c "source /opt/ros/noetic/setup.bash && catkin_make"
+          /bin/bash -c "source /opt/ros/noetic/setup.bash && cd .. && catkin_make"
               
   test:
     needs: build
