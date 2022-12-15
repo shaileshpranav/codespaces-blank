@@ -66,7 +66,8 @@ jobs:
           # echo "::warning $CI_SOURCE_PATH"
           # echo "::warning `ls -l`"
           catkin config --install --cmake-args -DCMAKE_BUILD_TYPE=Release
-          catkin build --no-status
+          # catkin build --no-status
+          catkin_make
           source devel/setup.bash
       - name: lint
         run: |
