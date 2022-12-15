@@ -62,6 +62,11 @@ SOFTWARE.
 - [Gazebo](http://gazebosim.org/)
 - [Opencv](https://github.com/opencv/opencv)
 
+## Design and Development Process
+
+We will be making use of ESC methodology for the initial design process which is by extraction of significant concepts. We identified the flow of the future program. Our software team worked on this project through iterative software evolution and service processes. Agile Development Process has been used in the development process with Test-Driven Development. 
+
+Being a team of three programmers, we have decided to adopt pair programming roles:driver and navigator, along with a design keeper role.
 
 ## Build
 - Create a workspace
