@@ -48,6 +48,7 @@ jobs:
       - name: Install ROS packages with rosdep
         run: |
           source /opt/ros/$ROS_DISTRO/setup.bash
+          bash src/${{ github.workspace }}/install.bash
           sudo rosdep init
           rosdep update
           mkdir -p ~/catkin_ws/src
