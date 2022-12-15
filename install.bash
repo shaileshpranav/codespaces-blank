@@ -23,3 +23,5 @@ sudo apt-get install libgazebo9-dev
 
 source /opt/ros/noetic/setup.bash
 rospack profile
+sudo rosdep init
+rosdep update --include-eol-distros 
