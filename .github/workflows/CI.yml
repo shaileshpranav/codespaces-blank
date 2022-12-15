@@ -24,7 +24,8 @@ jobs:
       
       - name: 🔨 Build Project
         run: |
-          /bin/bash -c "source /opt/ros/noetic/setup.bash && cd ../.. && catkin_make"
+            source /opt/ros/noetic/setup.bash 
+            catkin_make
               
   test:
     needs: build
@@ -37,7 +38,8 @@ jobs:
         submodules: recursive
     - name: 🧪 Execute Unit Tests
       run: |
-        /bin/bash -c "source /opt/ros/noetic/setup.bash && catkin_make run_tests"
+         source /opt/ros/noetic/setup.bash
+         catkin_make run_tests
 
      # Upload coverage result to Coverage.io 
     - name: Upload result to Coveralls.io
@@ -45,3 +47,5 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         path-to-lcov: ${{github.workspace}}/build/coverage.info.cleaned
+        fail_ci_if_error: true # optional (default = false)
+        verbose: true #
