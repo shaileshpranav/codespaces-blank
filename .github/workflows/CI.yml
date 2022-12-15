@@ -13,13 +13,13 @@ jobs:
     runs-on: ubuntu-20.04
     container: raiderrobotics/container-registry:rr-noetic-base
     steps:
-      - uses: actions/checkout@v3
-      - uses: betwo/github-setup-catkin@master
-        with:
-          ros-version: 'melodic'
-          build-tool: 'catkin_tools'
-          workspace: '$GITHUB_WORKSPACE'
-      - run: catkin build
+    - name: ✔️ Checkout Repository and Submodules
+      uses: actions/checkout@v2
+      with:
+        submodules: recursive
+    - name: 🔨 Build Project
+      run: |
+        /bin/bash -c "source /opt/ros/noetic/setup.bash && catkin_make v5_hal_firmware_build"
       
               
   test:
