@@ -92,9 +92,9 @@ jobs:
           cd ~/catkin_ws
           # echo "::warning $CI_SOURCE_PATH"
           # echo "::warning `ls -l`"
-          catkin config --install --cmake-args -DCMAKE_BUILD_TYPE=Release
-          catkin build
-          # catkin_make
+          # catkin config --install --cmake-args -DCMAKE_BUILD_TYPE=Release
+          # catkin build
+          catkin_make
           source devel/setup.bash
           
 #       - name: Build Tests
