@@ -1,8 +1,6 @@
 <?xml version="1.0"?>
 <launch>
-  <node name="simple_navigation_goals" pkg="wall-e" type="Navigation_node" output = "screen">
-  <rosparam file="$(find wall-e)/param/aruco_lookup.yaml" command="load" />
-  </node>
-  <node pkg="wall-e" name="object_spawner" type="object_spawner_node" output="screen"/>
   <test pkg="wall-e" test-name="main_tests" type="main_rostest" />
+  <node name="simple_navigation_goals" pkg="wall-e" type="Navigation_node" output = "screen"/>
+  <node pkg="wall-e" name="object_spawner" type="object_spawner_node" output="screen"/>
 </launch>
