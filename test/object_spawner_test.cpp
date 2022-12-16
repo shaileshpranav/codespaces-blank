@@ -109,7 +109,7 @@ TEST(test_object_spawner_class, test_set_object_pose) {
     spawner.set_object_pose(object_pose);
 
     // Assert
-    ASSERT_TRUE(waitForMessage(msg_received, 3));
+    EXPECT_TRUE(waitForMessage(msg_received, 3));
     EXPECT_EQ(pose_msg.reference_frame, expected_msg.reference_frame);
     EXPECT_EQ(pose_msg.pose, expected_msg.pose);
 }
@@ -132,7 +132,7 @@ TEST(test_object_spawner_class, set_object_pose_test) {
     ros::Subscriber sub = nh.subscribe("/gazebo/set_model_state", 10,
                                                             pose_cb);
     // Assert
-    ASSERT_TRUE(waitForMessage(msg_received, 3));
+    EXPECT_TRUE(waitForMessage(msg_received, 3));
     // EXPECT_EQ(pose_msg.reference_frame, expected_msg.reference_frame);
     // EXPECT_EQ(pose_msg.pose, expected_msg.pose);
 }

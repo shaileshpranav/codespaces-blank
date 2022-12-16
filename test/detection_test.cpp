@@ -70,9 +70,9 @@ TEST(test_detect_object_class, test_detect_object) {
 
     // Act
     img_pub.publish(msg);
-    waitFor_message(messageReceived, 3);
+    waitFor_message(messageReceived, 10);
     messageReceived = true;
 
     // Assert
-    ASSERT_TRUE(waitFor_message(messageReceived, 3));
+    EXPECT_TRUE(waitFor_message(messageReceived, 10));
 }

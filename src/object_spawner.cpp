@@ -103,17 +103,7 @@ void ObjectSpawner::set_object_pose(geometry_msgs::Pose inPose) {
 
 void ObjectSpawner::publish_pose(const ros::TimerEvent &) {
   geometry_msgs::TransformStamped transformStamped;
-//   if (is_object_in_hand) {
-//     geometry_msgs::TransformStamped transformStamped;
-//     transformStamped = tfBuffer_.lookupTransform(
-//         "map", "gripper_grasping_frame", ros::Time(0));
-//     object_pose_.position.x = transformStamped.transform.translation.x;
-//     object_pose_.position.y = transformStamped.transform.translation.y;
-//     object_pose_.position.z = transformStamped.transform.translation.z;
-//     object_pose_.orientation = transformStamped.transform.rotation;
-//   } else {
-    object_pose_.position.z = 0.025;
-//   }
+  object_pose_.position.z = 0.025;
   set_object_pose(object_pose_);
   transformStamped.header.stamp = ros::Time::now();
   transformStamped.header.frame_id = "map";
