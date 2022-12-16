@@ -64,7 +64,7 @@ TEST(test_detect_object_class, test_detect_object) {
     messageReceived = false;
     ros::NodeHandle nh;
     ros::Publisher img_pub = nh.advertise<sensor_msgs::Image>(
-                                                "xtion/rgb/image_raw", 10);
+                                                "/explorer/camera/rgb/image_raw", 10);
     sensor_msgs::ImagePtr msg = cv_bridge::CvImage(std_msgs::Header(),
                                                 "bgr8", image).toImageMsg();
 
