@@ -90,11 +90,7 @@ jobs:
         run: |
           source /opt/ros/$ROS_DISTRO/setup.bash
           cd ~/catkin_ws
-          # echo "::warning $CI_SOURCE_PATH"
-          # echo "::warning `ls -l`"
-          # catkin config --install --cmake-args -DCMAKE_BUILD_TYPE=Release
-          # catkin build
-          catkin_make
+          catkin build
           source devel/setup.bash
           
 #       - name: Build Tests
@@ -109,18 +105,10 @@ jobs:
         if: always()
         run: |
           sudo apt install -y lcov
-          source /opt/ros/$ROS_DISTRO/setup.bash
-          cd ~/catkin_ws
-          # catkin config --cmake-args -DCMAKE_CXX_FLAGS="-Wall -Wno-unused --coverage -fno-inline -fno-inline-small-functions -fno-default-inline" -DCMAKE_C_FLAGS="-Wall -Wno-unused --coverage -fno-inline -fno-inline-small-functions -fno-default-inline" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXE_LINKER_FLAGS="-lgcov"
-          # catkin build
-          # # catkin_make_isolated
-          # #catkin_make_isolated --make-args run_tests
-          # #catkin run_tests -i && catkin_test_results
-          # #catkin_test_results
-          # #cd ~/catkin_ws
-          # #rostest wall-e main_test.test
-          catkin_make
-          catkin_make run_tests
+          . /opt/ros/$ROS_DISTRO/setup.bash
+          catkin config --cmake-args -DCMAKE_CXX_FLAGS="-Wall -Wno-unused --coverage -fno-inline -fno-inline-small-functions -fno-default-inline" -DCMAKE_C_FLAGS="-Wall -Wno-unused --coverage -fno-inline -fno-inline-small-functions -fno-default-inline" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXE_LINKER_FLAGS="-lgcov"
+          catkin build
+          catkin run_tests -i && catkin_test_results
         
       - name: Configure Codecov
         run: |
