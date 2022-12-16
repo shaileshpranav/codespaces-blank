@@ -37,6 +37,15 @@ endif()
 find_package(Boost REQUIRED system filesystem date_time thread)
 find_package(Eigen3 REQUIRED)
 
+
+# if(COVERAGE)
+#   set(CMAKE_BUILD_TYPE "Debug")
+#   set(CMAKE_CXX_FLAGS "--coverage")
+#   set(CMAKE_CXX_OUTPUT_EXTENSION_REPLACE "ON")
+#   set(ARG_CONFIG_FILE "${PROJECT_SOURCE_DIR}/uncrustify_google_cpp_allman.cfg"
+#     CACHE STRING "uncrustify config file")
+# endif()
+
 ###################################
 ## catkin specific configuration ##
 ###################################
@@ -91,9 +100,9 @@ object_spawner_library
 ## Testing ##
 #############
 
-
 if(CATKIN_ENABLE_TESTING)
   find_package(rostest REQUIRED)
+  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage -pthread")
   find_package(OpenCV REQUIRED)  
 #   find_package(cv_bridge REQUIRED)
 
