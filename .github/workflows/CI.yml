@@ -119,9 +119,9 @@ jobs:
           # catkin_test_results
           #cd ~/catkin_ws
           #rostest wall-e main_test.test
-          RUN /bin/bash -c '. /opt/ros/melodic/setup.bash; cd /usr/src/catkin_ws; catkin_make_isolated'
-          RUN /bin/bash -c '. /opt/ros/melodic/setup.bash; cd /usr/src/catkin_ws; catkin_make_isolated --make-args run_tests'
-          RUN /bin/bash -c '. /opt/ros/melodic/setup.bash; cd /usr/src/catkin_ws; catkin_test_results'
+          /bin/bash -c '. /opt/ros/melodic/setup.bash; cd /usr/src/catkin_ws; catkin_make_isolated'
+          /bin/bash -c '. /opt/ros/melodic/setup.bash; cd /usr/src/catkin_ws; catkin_make_isolated --make-args run_tests'
+          /bin/bash -c '. /opt/ros/melodic/setup.bash; cd /usr/src/catkin_ws; catkin_test_results'
         
       - name: Configure Codecov
         run: |
