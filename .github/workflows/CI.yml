@@ -16,7 +16,7 @@ jobs:
         container:
           - image: 'ros:noetic'
             env:
-              PYTHON_VERSION:
+              PYTHON_VERSION: 3
               ROS_DISTRO: noetic
 
     container: ${{ matrix.container }}
@@ -36,10 +36,14 @@ jobs:
 
       - name: Install ROS package dependencies
         run: |
-          sudo sh -c "echo \"deb http://packages.ros.org/ros/ubuntu $ROS_CI_DESKTOP main\" > /etc/apt/sources.list.d/ros-latest.list"
-          sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
-          sudo apt-get update -qq
-          # sudo apt-get install dpkg
+          sudo apt update
+          sudo apt install -y git
+          sudo apt install -y python3-pip
+          sudo apt install -y python$PYTHON_VERSION-osrf-pycommon
+          sudo apt install -y python$PYTHON_VERSION-catkin-tools
+          python$PYTHON_VERSION -m pip install --upgrade pip
+          python3 -m pip install --upgrade pip
+
           
       - name: Additional dependencies
         run: |
