@@ -29,6 +29,9 @@ jobs:
       - uses: actions/checkout@v2
         with:
           path: src/${{ github.workspace }}
+      - name: Debugging with ssh
+        uses: lhotari/action-upterm@v1
+
 
       - name: Remove broken apt repos [Ubuntu]
         run: |
