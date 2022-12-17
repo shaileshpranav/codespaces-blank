@@ -42,7 +42,6 @@ jobs:
           sudo apt install -y python3-pip
           sudo apt install -y python$PYTHON_VERSION-osrf-pycommon
           sudo apt install -y python$PYTHON_VERSION-catkin-tools
-          python3 -m pip install --upgrade pip
           
       - name: Additional dependencies
         run: |
